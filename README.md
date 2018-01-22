@@ -9,5 +9,8 @@ The goal of this project is to make a ready to go database application that peop
 
 That is the rough idea.
 
+# Usefullness
+This project will be useful to people involved in recreation sports leagues. It will provide an easy way for people to look up and compare stats in recreation leagues. This could add extra enjoyment since some people really love to look around at this kind of stuff, and see how they and their friends are doing. It could also increase interest in the league, but that is much less likely.
+
 # Contributing
 Anyone is welcome to contribute. At this moment there is not much concrete to contribute on but hopefully soon that will change.
