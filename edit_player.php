@@ -22,7 +22,7 @@ if ( isset($_POST['player_name']))
         ':player_name' => $_POST['player_name'],
         ':goals' => $_POST['goals'],
         ':assists' => $_POST['assists'],
-        ':team_id' => $_POST['team_id']));
+        ':player_id' => $_POST['player_id']));
 
     $_SESSION['success'] = 'Record updated';
     header( 'Location: index.php' ) ;
@@ -39,10 +39,10 @@ if ( ! isset($_GET['player_id']) ) {
 
 // getting the entry to edit
 $stmt = $pdo->prepare("SELECT * FROM players where player_id = :player_id");
-$stmt->execute(array(":team_id" => $_GET['team_id']));
+$stmt->execute(array(":player_id" => $_GET['player_id']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if ( $row === false ) {
-    $_SESSION['error'] = 'Bad value for team_id';
+    $_SESSION['error'] = 'Bad value for player_id';
     header( 'Location: index.php' ) ;
     return;
 }
@@ -54,10 +54,10 @@ if ( isset($_SESSION['error']) ) {
 }
 
 // Run all entries through htmlentities to avoid html injection
-$t_name = htmlentities($row['player_name']);
+$p_name = htmlentities($row['player_name']);
 $goals = htmlentities($row['goals']);
 $assists = htmlentities($row['assists']);
-$team_id = $row['player_id'];
+$player_id = $row['player_id'];
 ?>
 
 <!DOCTYPE html>
@@ -70,12 +70,12 @@ $team_id = $row['player_id'];
   <p>Edit team</p>
   <form method="post" id="editForm">
   <input type="hidden" name="player_id" value="<?= $player_id ?>">
-  <p>First Name:
+  <p>Player Name:
   <input type="text" name="player_name" size="60" value="<?= $p_name ?>" /></p>
-  <p>Last Name:
-  <input type="text" name="goals" size="60" value="<?= $goals ?>" /></p>
-  <p>Last Name:
-  <input type="text" name="assists" size="60" value="<?= $goals ?>" /></p>
+  <p>Goals:
+  <input type="number" step=1 name="goals" value="<?= $goals ?>" /></p>
+  <p>Assists:
+  <input type="number" step=1 name="assists" value="<?= $assists ?>" /></p>
   </form>
 
   <input type="submit" value="Update" form="editForm">

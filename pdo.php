@@ -1,8 +1,8 @@
 <?php
 // Connecting to the database
 // See the readme for more info on this
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=customers',
-   'beerDB', 'slipknot');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=teams',
+   'teams', 'slipknot');
 
 // See the "errors" folder for details...
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

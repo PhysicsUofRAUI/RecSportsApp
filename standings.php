@@ -11,6 +11,7 @@
  </head>
  <body>
    <h1>Welcome to the database for Beer Legues!</h1>
+   <table border="1">
    <?php
      // retrieve all the entries and display them
      // would prefer to list them in order according to points
@@ -21,7 +22,7 @@
          echo("</td><td>");
          echo(htmlentities($row['points']));
          echo("</td><td>");
-         echo('<a href="edit_player.php?customer_id='.$row['player_id'].'">Edit</a> / ');
+         echo('<a href="edit_player.php?customer_id='.$row['player_id'].'">Edit</a>');
          echo("</td></tr>\n");
      }
    ?>
