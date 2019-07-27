@@ -53,7 +53,7 @@ table {
 }
 
 body {
-  background-image: url("photoOfMyBackyardRink.jpg");
+  background-image: url("photoOfMyBackyardRinkWithoutTrees.png");
 }
 </style>
  </head>
