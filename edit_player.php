@@ -25,15 +25,15 @@ if ( isset($_POST['player_name']))
         ':player_id' => $_POST['player_id']));
 
     $_SESSION['success'] = 'Record updated';
-    header( 'Location: index.php' ) ;
+    header( 'Location: playerStats.php' ) ;
     return;
   }
 }
 
-// Guardian: Make sure that customer_id is present
+// Guardian: Make sure that player_id is present
 if ( ! isset($_GET['player_id']) ) {
   $_SESSION['error'] = "Missing id";
-  header('Location: index.php');
+  header('Location: playerStats.php');
   return;
 }
 
@@ -43,7 +43,7 @@ $stmt->execute(array(":player_id" => $_GET['player_id']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if ( $row === false ) {
     $_SESSION['error'] = 'Bad value for player_id';
-    header( 'Location: index.php' ) ;
+    header( 'Location: playerStats.php' ) ;
     return;
 }
 
