@@ -67,8 +67,13 @@ body {
   </div>
    <h1>Standings!</h1>
    <table border="1" id="PointsTable">
-     <th onclick="sortTable(0)">Team Name</th><th onclick="sortTable(1)">Points</th><th>Edit?</th>
+     <th onclick="sortTable(0)">Team Name</th><th onclick="sortTable(1)">Points</th>
    <?php
+     // add the edit option if the user is logged in
+     if(isset($_SESSION['name']))
+     {
+      echo("<th>Edit</th>");
+     }
      // retrieve all the entries and display them
      // would prefer to list them in order according to points
      $stmt = $pdo->query("SELECT team_name, points, team_id FROM teams");
@@ -77,8 +82,11 @@ body {
          echo(htmlentities($row['team_name']));
          echo("</td><td>");
          echo(htmlentities($row['points']));
-         echo("</td><td>");
-         echo('<a href="edit_team.php?team_id='.$row['team_id'].'">Edit</a>');
+         if(isset($_SESSION['name']))
+         {
+           echo("</td><td>");
+           echo('<a href="edit_team.php?team_id='.$row['team_id'].'">Edit</a>');
+         }
          echo("</td></tr>\n");
      }
    ?>

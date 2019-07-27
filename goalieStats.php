@@ -68,8 +68,17 @@ body {
   <!-- end of W3 schools design -->
    <h1>Goalie Stats</h1>
    <table border="1" id="GoalieStats">
-     <th onclick="sortTable(0)">Goalie Name</th><th onclick="sortTable(1)">Wins</th><th onclick="sortTable(2)">Goals Against Average</th><th>Edit</th>
-   <?php
+     <th onclick="sortTable(0)">Goalie Name</th>
+     <th onclick="sortTable(1)">Wins</th>
+     <th onclick="sortTable(2)">Goals Against Average</th>
+     <?php
+
+     // add the edit option if the user is logged in
+     if(isset($_SESSION['name']))
+     {
+       echo("<th>Edit</th>");
+     }
+
      // retrieve all the entries and display them
      // would prefer to list them in order according to points
      $stmt = $pdo->query("SELECT goalie_name, GAA, wins, goalie_id FROM goalies");

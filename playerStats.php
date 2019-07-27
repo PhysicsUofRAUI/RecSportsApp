@@ -68,8 +68,16 @@ body {
   <!-- end of W3 schools design -->
    <h1>Player Stats</h1>
    <table border="1" id="PlayerStats">
-     <th onclick="sortTable(0)">Player Name</th><th onclick="sortTable(1)">Goals</th><th onclick="sortTable(2)">Assists</th><th>Edit</th>
+     <th onclick="sortTable(0)">Player Name</th>
+     <th onclick="sortTable(1)">Goals</th>
+     <th onclick="sortTable(2)">Assists</th>
    <?php
+
+     // add the edit option if the user is logged in
+     if(isset($_SESSION['name']))
+     {
+       echo("<th>Edit</th>");
+     }
      // retrieve all the entries and display them
      // would prefer to list them in order according to points
      $stmt = $pdo->query("SELECT player_name, goals, assists, player_id FROM players");
@@ -80,8 +88,11 @@ body {
          echo(htmlentities($row['goals']));
          echo("</td><td>");
          echo(htmlentities($row['assists']));
-         echo("</td><td>");
-         echo('<a href="edit_player.php?player_id='.$row['player_id'].'">Edit</a>');
+         if(isset($_SESSION['name']))
+         {
+           echo("</td><td>");
+           echo('<a href="edit_player.php?player_id='.$row['player_id'].'">Edit</a>');
+         }
          echo("</td></tr>\n");
      }
    ?>

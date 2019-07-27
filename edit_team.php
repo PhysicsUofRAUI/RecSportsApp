@@ -68,9 +68,9 @@ $team_id = $row['team_id'];
   <p>Edit team</p>
   <form method="post" id="editForm">
   <input type="hidden" name="team_id" value="<?= $team_id ?>">
-  <p>First Name:
+  <p>Team Name:
   <input type="text" name="team_name" size="60" value="<?= $t_name ?>" /></p>
-  <p>Last Name:
+  <p>Points:
   <input type="number" step=1 name="points" value="<?= $points ?>" /></p>
   </form>
 

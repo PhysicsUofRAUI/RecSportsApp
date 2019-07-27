@@ -67,7 +67,7 @@ $player_id = $row['player_id'];
 </head>
 <body>
 
-  <p>Edit team</p>
+  <p>Edit Player</p>
   <form method="post" id="editForm">
   <input type="hidden" name="player_id" value="<?= $player_id ?>">
   <p>Player Name:
