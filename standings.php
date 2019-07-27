@@ -15,14 +15,14 @@
    <?php
      // retrieve all the entries and display them
      // would prefer to list them in order according to points
-     $stmt = $pdo->query("SELECT team_name, points FROM teams");
+     $stmt = $pdo->query("SELECT team_name, points, team_id FROM teams");
      while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
          echo("<tr><td>");
          echo(htmlentities($row['team_name']));
          echo("</td><td>");
          echo(htmlentities($row['points']));
          echo("</td><td>");
-         echo('<a href="edit_player.php?customer_id='.$row['player_id'].'">Edit</a>');
+         echo('<a href="edit_team.php?team_id='.$row['team_id'].'">Edit</a>');
          echo("</td></tr>\n");
      }
    ?>

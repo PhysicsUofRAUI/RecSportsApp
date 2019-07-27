@@ -12,7 +12,7 @@ if ( isset($_POST['team_name']))
   if((strlen($_POST['team_name']) > 1))
   {
     // The sql command needed
-    $sql = "UPDATE teams SET team_name = :team_name, points = :points,
+    $sql = "UPDATE teams SET team_name = :team_name, points = :points
               WHERE team_id = :team_id";
 
     // Using pdo prepared statements to avoid sql injection
@@ -24,7 +24,7 @@ if ( isset($_POST['team_name']))
         ':team_id' => $_POST['team_id']));
 
     $_SESSION['success'] = 'Record updated';
-    header( 'Location: index.php' ) ;
+    header( 'Location: standings.php' ) ;
     return;
   }
 }
@@ -67,11 +67,11 @@ $team_id = $row['team_id'];
 
   <p>Edit team</p>
   <form method="post" id="editForm">
-  <input type="hidden" name="customer_id" value="<?= $team_id ?>">
+  <input type="hidden" name="team_id" value="<?= $team_id ?>">
   <p>First Name:
-  <input type="text" name="first_name" size="60" value="<?= $t_name ?>" /></p>
+  <input type="text" name="team_name" size="60" value="<?= $t_name ?>" /></p>
   <p>Last Name:
-  <input type="text" name="last_name" size="60" value="<?= $points ?>" /></p>
+  <input type="number" step=1 name="points" value="<?= $points ?>" /></p>
   </form>
 
   <input type="submit" value="Update" form="editForm">

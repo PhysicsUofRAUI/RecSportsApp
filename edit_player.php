@@ -12,7 +12,7 @@ if ( isset($_POST['player_name']))
   if((strlen($_POST['player_name']) > 1))
   {
     // The sql command needed
-    $sql = "UPDATE players SET player_name = :player_name, goals = :goals, assists = :assists,
+    $sql = "UPDATE players SET player_name = :player_name, goals = :goals, assists = :assists
               WHERE player_id = :player_id";
 
     // Using pdo prepared statements to avoid sql injection
