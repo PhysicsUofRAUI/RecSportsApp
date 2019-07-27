@@ -66,22 +66,25 @@ body {
   </div>
 
   <!-- end of W3 schools design -->
-   <h1>Player Stats</h1>
-   <table border="1" id="PlayerStats">
-     <th onclick="sortTable(0)">Player Name</th><th onclick="sortTable(1)">Goals</th><th onclick="sortTable(2)">Assists</th><th>Edit</th>
+   <h1>Goalie Stats</h1>
+   <table border="1" id="GoalieStats">
+     <th onclick="sortTable(0)">Goalie Name</th><th onclick="sortTable(1)">Wins</th><th onclick="sortTable(2)">Goals Against Average</th><th>Edit</th>
    <?php
      // retrieve all the entries and display them
      // would prefer to list them in order according to points
-     $stmt = $pdo->query("SELECT player_name, goals, assists, player_id FROM players");
+     $stmt = $pdo->query("SELECT goalie_name, GAA, wins, goalie_id FROM goalies");
      while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
          echo("<tr><td>");
-         echo(htmlentities($row['player_name']));
+         echo(htmlentities($row['goalie_name']));
          echo("</td><td>");
-         echo(htmlentities($row['goals']));
+         echo(htmlentities($row['wins']));
          echo("</td><td>");
-         echo(htmlentities($row['assists']));
-         echo("</td><td>");
-         echo('<a href="edit_player.php?player_id='.$row['player_id'].'">Edit</a>');
+         echo(htmlentities($row['GAA']));
+         if(isset($_SESSION['name']))
+         {
+           echo("</td><td>");
+           echo('<a href="edit_goalie.php?goalie_id='.$row['goalie_id'].'">Edit</a>');
+         }
          echo("</td></tr>\n");
      }
    ?>
@@ -96,7 +99,7 @@ body {
  <script>
  function sortTable(n) {
    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-   table = document.getElementById("PlayerStats");
+   table = document.getElementById("GoalieStats");
    switching = true;
    // Set the sorting direction to ascending:
    dir = "asc";

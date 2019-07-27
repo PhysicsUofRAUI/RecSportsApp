@@ -63,7 +63,7 @@ body {
      <a class="active" href="index.php">Home</a>
      <a href="playerStats.php">Player Stats</a>
      <a href="standings.php">Standings</a>
-     <a href="#goalieStats">Goalie Stats</a>
+     <a href="goalieStats.php">Goalie Stats</a>
   </div>
    <h1>Standings!</h1>
    <table border="1" id="PointsTable">

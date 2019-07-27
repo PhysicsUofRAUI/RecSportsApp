@@ -14,8 +14,10 @@
    <ul>
      <li><a href="standings.php">Standings</a></li>
      <li><a href="playerStats.php">How about them players?</a></li>
+     <li><a href="goalieStats.php">How about them goalies?</a></li>
      <li><a href="addTeam.php">Add a new team</a></li>
      <li><a href="addPlayer.php">Add a new player</a></li>
+     <li><a href="addGoalie.php">Add a new goalie</a></li>
      <li>
        <a
          <?php
